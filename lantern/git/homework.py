@@ -186,3 +186,4 @@ def simple_sort(nums: List[int]) -> List[list]:
     quick_sort(nums)
     # Verify it works
     return nums
+  

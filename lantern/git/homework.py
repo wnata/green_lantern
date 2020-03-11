@@ -4,7 +4,6 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
-import random
 
 
 class OurAwesomeException(Exception):
@@ -16,10 +15,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first == second:
-        return True
-    else:
-        return False
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -27,10 +23,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if type(first) == type(second):
-        return True
-    else:
-        return False
+    return type(first) == type(second)
 
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
@@ -38,10 +31,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if first is second:
-        return True
-    else:
-        return False
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -58,9 +48,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    first_value = int(first_value)
-    second_value = int(second_value)
-    return first_value * second_value
+    return int(first_value * second_value)
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -90,9 +78,12 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-    first_value = int(first_value)
-    second_value = int(second_value)
-    return first_value * second_value
+    try:
+        first_value = int(first_value)
+        second_value = int(second_value)
+        return first_value * second_value
+    except ValueError:
+        raise ValueError
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -111,20 +102,14 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    if word in text:
-        return True
-    else:
-        return False
+    return word in text
 
 
 def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    a = []
-    for i in range(0, 13):
-        if i != 6 and i != 7:
-            a.append(i)
+    a = [i for i in range(0, 13) if i != 6 and i != 7]
     return a
 
 
@@ -137,10 +122,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    a = []
-    for i in data:
-        if i >= 0:
-            a.append(i)
+    a = [i for i in data if i > 0]
     return a
 
 
@@ -152,9 +134,7 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    alpha = {}
-    for i in range(1, 27):
-        alpha.update({i: chr(i + 96)})
+    alpha = {i: chr(i + 96) for i in range(1, 27)}
     return alpha
 
 
@@ -166,12 +146,13 @@ def simple_sort(data: List[int]) -> List[list]:
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
     sorted_list = []
-    while data:
-        minimum = data[0]
-        for i in data:
+    new_data = data.copy()
+    while new_data:
+        minimum = new_data[0]
+        for i in new_data:
             if i < minimum:
                 minimum = i
         sorted_list.append(minimum)
-        data.remove(minimum)
+        new_data.remove(minimum)
 
     return sorted_list

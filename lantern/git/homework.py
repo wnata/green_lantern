@@ -48,7 +48,9 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    return int(first_value * second_value)
+    if not isinstance(first_value, int) or not isinstance(second_value, int):
+        raise TypeError("Input data must be integer")
+    return first_value * second_value
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -82,8 +84,8 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         first_value = int(first_value)
         second_value = int(second_value)
         return first_value * second_value
-    except ValueError:
-        raise ValueError
+    except (ValueError, TypeError):
+        raise ValueError("Not valid input data")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -109,8 +111,7 @@ def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    a = [i for i in range(0, 13) if i != 6 and i != 7]
-    return a
+    return [i for i in range(0, 13) if i != 6 and i != 7]
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:

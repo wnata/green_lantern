@@ -123,8 +123,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    a = [i for i in data if i > 0]
-    return a
+    return [i for i in data if i > 0]
 
 
 def alphabet() -> dict:
@@ -135,8 +134,7 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    alpha = {i: chr(i + 96) for i in range(1, 27)}
-    return alpha
+    return {i: chr(i + 96) for i in range(1, 27)}
 
 
 def simple_sort(data: List[int]) -> List[list]:

@@ -134,8 +134,8 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    return {i: chr(i + 96) for i in range(1, 27)}
-
+    from string import ascii_lowercase
+    return dict(enumerate(ascii_lowercase, start=1))
 
 def simple_sort(data: List[int]) -> List[list]:
     """

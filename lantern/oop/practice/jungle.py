@@ -32,7 +32,7 @@ class Predator(Animal):
         return int(herb.speed * 100 / self.speed)
 
     def is_herb_a_victim(self, herb: Herbivorous):
-        return self.power * 3 > herb.weight and self.speed > herb.speed * 1.15
+        return self.power * 3 > herb.weight and self.speed * 1.15 > herb.speed
 
 
 class Herbivorous(Animal):
@@ -40,8 +40,8 @@ class Herbivorous(Animal):
 
 
 if __name__ == "__main__":
-    simba = Predator(weight=100, speed=50, power=70)
-    timon = Herbivorous(weight=10, speed=55)
+    simba = Predator(weight=100, speed=100, power=70)
+    timon = Herbivorous(weight=10, speed=114)
 
     savana = Jungle(
         predators=[simba],
@@ -49,5 +49,4 @@ if __name__ == "__main__":
     )
 
     print(simba.hunt(savana))
-
-
+    

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from abc import ABC, abstractmethod
 
 from typing import List
 
@@ -10,11 +11,18 @@ class Jungle:
         self.herbivorous = herbivorous
 
 
-class Animal:
+JUNGLE = Jungle(predators=[], herbivorous=[])
+
+
+class Animal(ABC):
 
     def __init__(self, weight, speed):
         self.weight = weight
         self.speed = speed
+
+    @abstractmethod
+    def eat(self):
+        raise NotImplementedError
 
 
 class Predator(Animal):
@@ -22,8 +30,8 @@ class Predator(Animal):
         super().__init__(weight, speed)
         self.power = power
 
-    def hunt(self, jungle):
-        for herb in jungle.herbivorous:
+    def __hunt(self):
+        for herb in JUNGLE.herbivorous:
             if self.is_herb_a_victim(herb):
                 return True
         return False
@@ -34,19 +42,36 @@ class Predator(Animal):
     def is_herb_a_victim(self, herb: Herbivorous):
         return self.power * 3 > herb.weight and self.speed * 1.15 > herb.speed
 
+    def eat(self):
+        return self.__hunt()
+
 
 class Herbivorous(Animal):
-    pass
+    def eat(self):
+        pass
 
 
 if __name__ == "__main__":
+    # test if predator can hunt herbicorous
     simba = Predator(weight=100, speed=100, power=70)
     timon = Herbivorous(weight=10, speed=114)
+    JUNGLE.predators.append(simba)
+    JUNGLE.herbivorous.append(timon)
+    try:
+        print(simba.hunt())
+    except AttributeError:
+        print('hunt is hidden')
+    else:
+        print('something wrong')
+    # end of test
 
-    savana = Jungle(
-        predators=[simba],
-        herbivorous=[timon]
-    )
+    # test of eat method
+    print(simba.eat())
 
-    print(simba.hunt(savana))
-    
+    # test animal fo abstract class
+    try:
+        animal = Animal(weight=5, speed=10)
+    except TypeError:
+        print('it`s ok')
+    else:
+        print('something goes wrong')

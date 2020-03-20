@@ -51,6 +51,7 @@ class Herbivorous(Animal):
 
 if __name__ == "__main__":
     # testing predator's possibility to hunt herbivorous
+
     simba = Predator(weight=100, speed=100, power=70)
     timon = Herbivorous(weight=10, speed=114)
 

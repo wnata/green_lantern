@@ -46,7 +46,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     try:
         result = int(first_value) * int(second_value)
     except ValueError:
-        result = 'One of the elemnts is not INTEGER!'
+        result = 'One of the elements is not INTEGER!'
 
     return result
 

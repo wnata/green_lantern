@@ -65,7 +65,7 @@ def test_cat_run(age, hours, result):
 
 @pytest.mark.parametrize("age, hours, result", [
     (1, 1, 35),
-    (7, 4, "Your cat is died :("),
+    (7, 4, "Your cat is dead."),
     (16, 1, 45)
 ])
 def test_cat_run(age, hours, result):
@@ -168,7 +168,3 @@ class TestHouse:
         expected_res = 115
 
         assert actual_res == expected_res
-
-
-if __name__ == '__main__':
-    pytest.main()

@@ -64,12 +64,6 @@ class TestSQLQueries(unittest.TestCase):
         cls.create_test_database_and_role(root_conn)
         root_conn.close()
 
-        conn = psycopg2.connect(**TEST_DATABASE)
-        # with conn.cursor() as cursor:
-        #     init_tables(cursor)
-        conn.commit()
-        conn.close()
-
     def setUp(self) -> None:
         self.conn = psycopg2.connect(**TEST_DATABASE)
         with self.conn.cursor() as cursor:

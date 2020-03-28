@@ -36,7 +36,6 @@ sudo apt-get install postgresql
 sudo apt-get install python-psycopg2
 sudo apt-get install libpq-dev
 sudo apt-get install python3.7-dev
-
 ```
 
 ## psql
@@ -74,6 +73,7 @@ knowledge, you should learn how to setup local environment, read
 errors and good luck
 
 ## More troubleshooting
+### Can not connect to database via python
 If you can connect to database with psql but still can't connect with
 python code please edit next file
 `/etc/postgresql/<YOUR POSTGRESS VERSION>/main/pg_hba.conf`
@@ -86,8 +86,22 @@ Then you need to restart your postgres service
 sudo service postgresql restart
 ```
 
-If you still have problems with installing pyscopg2
+### Python tests failed with connection error
+```
+ERROR: setUpClass (tests.TestSQLQueries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dvasilov/Projects/cursor/green_lantern/lantern/relational_database/tests.py", line 61, in setUpClass
+    root_conn = psycopg2.connect(**DATABASE)
+  File "/home/dvasilov/Projects/cursor/green_lantern/lantern/relational_database/env/lib/python3.7/site-packages/psycopg2/__init__.py", line 126, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  password authentication failed for user "cursor"
+```
+This can be dummy error message with actually port mismatch in `config.py`
 
+### Linux dont see your psycopg2 path 
+
+If you still have problems with installing psycopg2
 try to do next
 
 ```
@@ -97,11 +111,3 @@ ls -la /usr/lib/postgresql/
 export PATH=/usr/lib/postgresql/your_version_here/bin/:$PATH
 
 ```
-
-
-```.env
-sudo apt install build-essential
-```
-
-# Tests
-To run tests

@@ -39,37 +39,40 @@ sudo apt-get install python3.7-dev
 
 ```
 
-
- When you are in psql command line type
-```.postgres=#
-
-\help
-\?
-
+## psql
+If you are logged in postgress shell you will seee
 ```
-to see all possible commands
+$ psql -h localhost -U cursor -d cursor_db -p 5432
+Password for user cursor:
+psql (12.1 (Ubuntu 12.1-1.pgdg18.04+1))
+Type "help" for help.
+
+cursor_db=#
+```
+To see all possible commands insert `\?`
 
 About basic commands in psql you could read here
 http://www.postgresqltutorial.com/psql-commands/
 
-
-If you could connect to database with this command
-```
-psql -h localhost -d cursor_db -U cursor -p 5433
+## Creating python environment
+To create python environment go into `green_lantern/lantern/relational_database`
 
 ```
-
-But still could not connect with python code
+$ virtualenv env -p python3.7
+$ source env/bin/activate
+(env) $ pip install -r requirements.txt
+(env) $
 ```
-subl /etc/postgresql/9.6/main/pg_hba.conf
-```
-Your version of psql could be another, look in dir /etc/postgresql/
 
+If you can connect to database with psql but still can't connect with
+python code please edit next file
+`/etc/postgresql/<YOUR POSTGRESS VERSION>/main/pg_hba.conf`
+for version number check dir /etc/postgresql/
 and change `local all all peer` to `local all all password`
 
 Then you need to restart your postgres service
 
-```.env
+```
 sudo service postgresql restart
 ```
 

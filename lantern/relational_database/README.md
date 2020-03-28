@@ -61,9 +61,19 @@ To create python environment go into `green_lantern/lantern/relational_database`
 $ virtualenv env -p python3.7
 $ source env/bin/activate
 (env) $ pip install -r requirements.txt
-(env) $
+```
+## Run tests
+You should be in `green_lantern/lantern/relational_database`
+```
+(env) $ python -m unittest tests.py
+
 ```
 
+Tests should Fail make them pass. This task not only for SQL
+knowledge, you should learn how to setup local environment, read
+errors and good luck
+
+## More troubleshooting
 If you can connect to database with psql but still can't connect with
 python code please edit next file
 `/etc/postgresql/<YOUR POSTGRESS VERSION>/main/pg_hba.conf`
@@ -92,3 +102,6 @@ export PATH=/usr/lib/postgresql/your_version_here/bin/:$PATH
 ```.env
 sudo apt install build-essential
 ```
+
+# Tests
+To run tests

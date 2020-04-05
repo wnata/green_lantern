@@ -35,3 +35,4 @@ def update_user(user_id):
     db = inject.instance('DB')
     db.users.update_user_by_id(user_id, request.json)
     return jsonify({'status': 'success'})
+

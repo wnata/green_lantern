@@ -11,12 +11,11 @@ from homework import (
     simple_sort,
     is_word_in_text,
     remove_from_list_all_negative_numbers,
-    some_loop_exercise
+    some_loop_exercise,
 )
 
 
 class TestObjectsComparison(unittest.TestCase):
-
     def test_is_two_object_has_same_value_compare(self):
         self.assertTrue(is_two_object_has_same_value(10, 10))
 
@@ -28,7 +27,9 @@ class TestObjectsComparison(unittest.TestCase):
 
         self.assertFalse(is_two_object_has_same_value(first_value, 17))
 
-        self.assertTrue(is_two_object_has_same_value(["Hello", 15, True], ["Hello", 15, True]))
+        self.assertTrue(
+            is_two_object_has_same_value(["Hello", 15, True], ["Hello", 15, True])
+        )
 
         self.assertFalse(is_two_objects_has_same_type(96, 96.0))
 
@@ -43,7 +44,9 @@ class TestObjectsComparison(unittest.TestCase):
 
         self.assertFalse(is_two_objects_has_same_type(first_value, 17))
 
-        self.assertTrue(is_two_objects_has_same_type(["Hello", 15, True], ["Hello", 15, True]))
+        self.assertTrue(
+            is_two_objects_has_same_type(["Hello", 15, True], ["Hello", 15, True])
+        )
 
         self.assertFalse(is_two_objects_has_same_type(96, 96.0))
 
@@ -62,13 +65,14 @@ class TestObjectsComparison(unittest.TestCase):
 
         self.assertFalse(is_two_objects_is_the_same_objects(first_value, 17))
 
-        self.assertFalse(is_two_objects_is_the_same_objects(["Hello", 15, True], ["Hello", 15, True]))
+        self.assertFalse(
+            is_two_objects_is_the_same_objects(["Hello", 15, True], ["Hello", 15, True])
+        )
 
         self.assertFalse(is_two_objects_is_the_same_objects(96, 96.0))
 
 
 class TestOperationsWithInts(unittest.TestCase):
-
     def test_multiple_ints_good_values(self):
         self.assertEqual(multiple_ints(6, 0), 0)
         self.assertEqual(multiple_ints(12, 2), 24)
@@ -96,7 +100,6 @@ class TestOperationsWithInts(unittest.TestCase):
 
 
 class TestLoopExercises(unittest.TestCase):
-
     def test_some_loop_exercise(self):
 
         self.assertListEqual(some_loop_exercise(), [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12])
@@ -104,15 +107,21 @@ class TestLoopExercises(unittest.TestCase):
     def test_remove_from_list_all_negative_numbers(self):
         given_data = [1, 2, -9, 6, 7, 6, -19, -12]
         expected_result = [1, 2, 6, 7, 6]
-        self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
+        self.assertListEqual(
+            remove_from_list_all_negative_numbers(given_data), expected_result
+        )
         given_data = [-33, 68, -5, -65, 47, -55, -36, 85, -6, 50]
         expected_result = [68, 47, 85, 50]
 
-        self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
+        self.assertListEqual(
+            remove_from_list_all_negative_numbers(given_data), expected_result
+        )
 
         given_data = [-14, -59, -36, -69, -73, -69, -44, -83, -77, -93]
         expected_result = []
-        self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
+        self.assertListEqual(
+            remove_from_list_all_negative_numbers(given_data), expected_result
+        )
 
         for i in range(10):
             given_data = [random.randint(-100, 100)]
@@ -123,7 +132,6 @@ class TestLoopExercises(unittest.TestCase):
 
 
 class TestWords(unittest.TestCase):
-
     def test_is_word_in_text(self):
 
         text = "This is very easy task"
@@ -143,7 +151,6 @@ class TestWords(unittest.TestCase):
 
 
 class TestSimpleSort(unittest.TestCase):
-
     def test_simple_sort(self):
         for _ in range(10):
             given_data = [random.randint(0, 100) for _ in range(random.randint(2, 20))]
@@ -153,12 +160,12 @@ class TestSimpleSort(unittest.TestCase):
 
 
 class TestAlphabet(unittest.TestCase):
-
     def test_alphabet(self):
         expected = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
                     'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16,
                     'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22,
                     'w': 23, 'x': 24, 'y': 25, 'z': 26}
+
         self.assertDictEqual(alphabet(), expected)
 
 

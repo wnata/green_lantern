@@ -42,7 +42,6 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-
     try:
         result = int(first_value) * int(second_value)
     except ValueError:
@@ -74,13 +73,13 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-
     try:
         result = int(first_value) * int(second_value)
     except TypeError:
         result = 'Not valid input data'
 
     return result
+
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -136,6 +135,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
 import string
 
 
+
 def alphabet() -> dict:
     """
     Create dict which keys are alphabetic characters. And values their number in alphabet
@@ -145,6 +145,7 @@ def alphabet() -> dict:
         >>> {"a": 1, "b": 2 ...}
     """
     return dict(zip(string.ascii_lowercase, range(1,27)))
+
 
 
 def simple_sort(nums: List[int]) -> List[list]:
@@ -186,4 +187,3 @@ def simple_sort(nums: List[int]) -> List[list]:
     quick_sort(nums)
     # Verify it works
     return nums
-  

@@ -10,7 +10,6 @@ class FakeStorage:
     def users(self):
         return self._users
 
-
 class FakeUsers:
     def __init__(self):
         self._users = {}
@@ -32,3 +31,4 @@ class FakeUsers:
             self._users[user_id] = user
         else:
             raise NoSuchUserError(user_id)
+

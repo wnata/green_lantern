@@ -1,6 +1,6 @@
 from itertools import count
 
-from grocery_store.store_app import NoSuchUserError
+from store_app import NoSuchUserError
 
 
 class Repository:

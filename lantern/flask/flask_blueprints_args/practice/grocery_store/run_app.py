@@ -1,6 +1,7 @@
 from store_app import app
 from fake_storage import FakeStorage
 import inject
+from views.users import users
 
 
 def configure(binder):
@@ -12,4 +13,5 @@ inject.clear_and_configure(configure)
 
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.register_blueprint(users)
+    app.run(port=8080, debug=True)

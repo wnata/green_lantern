@@ -43,7 +43,7 @@ upstream  https://github.com/Vasilov345/green_lantern.git (push)
 ```
 git fetch upstream
 git checkout upstream/practice_branch
-git chechout -b student_practice_branch
+git checkout -b student_practice_branch
 ```
 
 Коли код написаний в достатній степені, щоб разшарити його іншим студентам, то  код комітиться в бранчу студента.  

@@ -20,6 +20,7 @@ class FakeStorage:
     def stores(self):
         return self._stores
 
+
 class FakeUsers:
     def __init__(self):
         self._users = {}
@@ -73,7 +74,7 @@ class FakeGoods:
             data_upd = self._goods.get(id_upd, '')
             # found id for update
             if data_upd:
-                self._goods.update({id_upd:good})
+                self._goods.update({id_upd: good})
                 updated += 1
             else:
                 not_exist.append(id_upd)
@@ -96,7 +97,6 @@ class FakeStores:
             return self._stores[store_id]
         except KeyError:
             raise NoSuchStoreError(store_id)
-
 
     def update_store_by_id(self, store_id, store):
         if store_id in self._stores:

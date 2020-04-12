@@ -22,31 +22,31 @@ class TestUsers(Initializer):
     def test_create_new(self):
         resp = self.client.post(
             '/users',
-            json={'name':'John Doe'}
+            json={'name': 'John Doe'}
         )
         assert resp.status_code == 201
         assert resp.json == {'user_id': 1}
 
         resp = self.client.post(
             '/users',
-            json={'name':'Andrew Derkach'}
+            json={'name': 'Andrew Derkach'}
         )
         assert resp.json == {'user_id': 2}
 
     def test_successful_get_user(self):
         resp = self.client.post(
             '/users',
-            json={'name':'John Doe'}
+            json={'name': 'John Doe'}
         )
         user_id = resp.json['user_id']
         resp = self.client.get(f'/users/{user_id}')
         assert resp.status_code == 200
-        assert resp.json == {'name':'John Doe'}
+        assert resp.json == {'name': 'John Doe'}
 
     def test_get_unexistent_user(self):
         resp = self.client.get(f'/users/1')
         assert resp.status_code == 404
-        assert resp.json == {'error':'No such user_id 1'}
+        assert resp.json == {'error': 'No such user_id 1'}
 
     def test_succesful_update_user(self):
         resp = self.client.post(
@@ -74,8 +74,8 @@ class TestGoods(Initializer):
     def test_create_new_good(self):
         resp = self.client.post(
             '/goods',
-            json=[{'good':'Chocolate_bar',
-                  'price':10},
+            json=[{'good': 'Chocolate_bar',
+                   'price': 10},
                   {'good': 'Milk',
                    'price': 5}
                   ]
@@ -87,7 +87,7 @@ class TestGoods(Initializer):
     def test_get_goods(self):
         resp = self.client.post(
             '/goods',
-            json=[{'good': 'Chocolate_bar','price': 10},
+            json=[{'good': 'Chocolate_bar', 'price': 10},
                   {'good': 'Milk', 'price': 5}]
         )
         resp = self.client.get('/goods')
@@ -108,7 +108,7 @@ class TestGoods(Initializer):
                   {'good': 'crisps', 'price': 5, 'id': 3}]
         )
         assert resp.status_code == 200
-        assert resp.json ==  {'successfully_updated': 2, 'errors':{'no such id in goods':[3]}}
+        assert resp.json == {'successfully_updated': 2, 'errors': {'no such id in goods': [3]}}
 
 
 class TestStore(Initializer):
@@ -136,7 +136,7 @@ class TestStore(Initializer):
         )
         resp = self.client.get(f'/users/2')
         assert resp.status_code == 404
-        assert resp.json == {'error':'No such user_id 2'}
+        assert resp.json == {'error': 'No such user_id 2'}
 
         resp = self.client.post(
             '/store',
@@ -154,19 +154,18 @@ class TestStore(Initializer):
         )
         resp = self.client.post(
             '/store',
-             json={'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 1}
+            json={'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 1}
         )
         store_id = resp.json['store_id']
         resp = self.client.get(f'/store/{store_id}')
 
         assert resp.status_code == 200
-        assert resp.json ==  {'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 1}
-
+        assert resp.json == {'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 1}
 
     def test_get_unexistent_store(self):
         resp = self.client.get(f'/store/1')
         assert resp.status_code == 404
-        assert resp.json == {'error':'No such store_id 1'}
+        assert resp.json == {'error': 'No such store_id 1'}
 
     def test_succesful_update_store(self):
         resp_user = self.client.post(
@@ -191,7 +190,6 @@ class TestStore(Initializer):
 
         store_id = resp_store.json['store_id']
 
-
         resp_store = self.client.put(
             f'/store/{store_id}',
             json={'name': 'Mad Deer', 'location': 'Kiev', 'manager_id': 1}
@@ -214,5 +212,4 @@ class TestStore(Initializer):
         )
 
         assert resp_store.status_code == 404
-        assert resp_store.json == {'error':'No such store_id 1'}
-
+        assert resp_store.json == {'error': 'No such store_id 1'}

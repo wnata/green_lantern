@@ -1,8 +1,7 @@
-
 class Config:
     TEST_VALUE = "CONFIG_VALUE"
-    PG_USER = "jeniatrofimenko"
-    PG_PASSWORD = "password"
+    PG_USER = "test_cursor"
+    PG_PASSWORD = "test"
     PG_HOST = "localhost"
     PG_PORT = 5432
     DB_NAME = "test_orm_cursor"

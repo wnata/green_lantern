@@ -2,3 +2,7 @@ env/
 __pycache__/
 *.pyc
 .idea/
+.DS_Store/
+.DS_Store
+./**/.data/
+lantern/django/django_intro/docker/envs/.**

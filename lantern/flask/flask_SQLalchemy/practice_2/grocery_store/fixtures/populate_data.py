@@ -1,7 +1,7 @@
 import csv
 import os
 
-from grocery_store.app import app, db
+from grocery_store import app, db
 from grocery_store.models import User
 from grocery_store.config import FIXTURES_DIR
 from sqlalchemy_utils import create_database, drop_database, database_exists

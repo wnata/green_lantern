@@ -1,4 +1,5 @@
-from grocery_store.app import db
+from grocery_store import db
+
 
 class User(db.Model):
     __tablename__ = "users"

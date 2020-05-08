@@ -1,5 +1,5 @@
 from flask import request
-from flask_restful import Resource, marshal_with
+from flask_restful import Resource, marshal
 
 from grocery_store.models import User
 from grocery_store.db import db
@@ -7,11 +7,13 @@ from grocery_store.routes.marshal_structure import users_structure
 
 
 class Users(Resource):
-    @marshal_with(users_structure)
     def get(self, user_id=None):
         if user_id:
-            return User.query.get(user_id)
-        return User.query.all()
+            user = User.query.get(user_id)
+            if user:
+                return marshal(user, users_structure)
+            return f"No such user with id: {user_id}"
+        return marshal(User.query.all(), users_structure)
 
     def post(self):
         user = User(**request.json)

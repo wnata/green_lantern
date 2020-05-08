@@ -1,4 +1,4 @@
-from grocery_store import db
+from grocery_store.db import db
 
 
 class User(db.Model):

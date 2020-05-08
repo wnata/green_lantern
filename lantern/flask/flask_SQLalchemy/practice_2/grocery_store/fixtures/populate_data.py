@@ -1,3 +1,4 @@
+from grocery_store.app import app
 import csv
 
 

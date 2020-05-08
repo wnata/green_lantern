@@ -8,3 +8,6 @@ class User(db.Model):
     name = db.Column(db.String(), nullable=False)
     email = db.Column(db.String(), nullable=False)
     password = db.Column(db.String(), nullable=False)
+
+    def __repr__(self):
+        return f'<id: {self.user_id}, name: {self.name}, email: {self.email}>'

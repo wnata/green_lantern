@@ -3,9 +3,10 @@ import os
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 FIXTURES_DIR = os.path.join(ROOT_DIR, 'fixtures')
 
+
 class Config:
     PG_USER = "cursor"
-    PG_PASSWORD = "very_secret_password"
+    PG_PASSWORD = "new_password"
     PG_HOST = "localhost"
     PG_PORT = 5432
     DB_NAME = "cursor_sqlalchemy_db"

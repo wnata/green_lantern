@@ -11,3 +11,10 @@ goods_structure = {
     'name': fields.String,
     'brand': fields.String,
 }
+
+stores_structure = {
+    'store_id': fields.Integer,
+    'city': fields.String,
+    'address': fields.String,
+    'manager_id': fields.String,
+}

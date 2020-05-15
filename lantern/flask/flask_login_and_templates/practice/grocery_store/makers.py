@@ -5,6 +5,7 @@ from flask_script import Server, Manager
 from grocery_store.config import Config
 from grocery_store.routes import users, goods, stores
 from grocery_store.db import db
+from grocery_store.commands import Populate
 
 
 def make_app():
@@ -25,4 +26,5 @@ def make_manager(app):
     manager = Manager(app)
     manager.add_command('runserver', Server(host=Config.HOST, port=Config.PORT))
     manager.add_command('db', MigrateCommand)
+    manager.add_command('populate', Populate)
     return manager

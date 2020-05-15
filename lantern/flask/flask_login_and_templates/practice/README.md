@@ -2,9 +2,5 @@
 
     $ pip install -r grocery_store/requirements.txt
     $ pip install -e .
-
-review config in grocery_store/config.py
-
-    $ python grocery_store/fixtures/populate_data.py
-    Database exists
-    Data written in data_base succesfuly
+    $ python grocery_store/manage.py db upgrade
+    $ python grocery_store/manage.py populate

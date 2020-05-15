@@ -1,4 +1,4 @@
-from grocery_store.app import make_app, make_db, make_manager
+from grocery_store.makers import make_app, make_db, make_manager
 from grocery_store.config import Config
 from flask_migrate import Migrate
 

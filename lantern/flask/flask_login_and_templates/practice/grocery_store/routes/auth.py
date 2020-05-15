@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from grocery_store.database import db
 from grocery_store.models import User
+from flask_login import login_user
 
 auth = Blueprint('auth', __name__)
 
@@ -23,8 +24,8 @@ def login_post():
     # take the user supplied password, hash it, and compare it to the hashed password in database
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
-        return redirect(url_for('auth.login')) # if user doesn't exist or password is wrong, reload the page
-
+        return redirect(url_for('auth.login'))  # if user doesn't exist or password is wrong, reload the page
+    login_user(user, remember=remember)
     # if the above check passes, then we know the user has the right credentials
     # login code goes here
     return redirect(url_for('main.profile'))
@@ -34,9 +35,11 @@ def login_post():
 def signup():
     return render_template('signup.html')
 
+
 @auth.route('/logout')
 def logout():
     return render_template('logout.html')
+
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():

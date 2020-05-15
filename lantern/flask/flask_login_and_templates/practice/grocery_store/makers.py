@@ -3,10 +3,9 @@ from flask_migrate import MigrateCommand
 from flask_script import Server, Manager
 
 from grocery_store.config import Config
-from grocery_store.routes import users, goods, stores
+from grocery_store.routes import users, goods, stores, auth
 from grocery_store.db import db
 from grocery_store.commands import Populate
-from grocery_store.auth import auth
 
 
 def make_app():

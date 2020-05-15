@@ -6,6 +6,7 @@ from grocery_store.config import Config
 from grocery_store.routes import users, goods, stores
 from grocery_store.db import db
 from grocery_store.commands import Populate
+from grocery_store.auth import auth
 
 
 def make_app():
@@ -14,6 +15,7 @@ def make_app():
     app.register_blueprint(users)
     app.register_blueprint(goods)
     app.register_blueprint(stores)
+    app.register_blueprint(auth)
     return app
 
 

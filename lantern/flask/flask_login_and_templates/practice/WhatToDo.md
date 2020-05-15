@@ -1,17 +1,11 @@
 # Practice plan
 
-## Use flask script for runserver
-## Use flask script for migrations
-## Create init migration
-## Add model for Order and OrderLine 
-    Order
-        order_id
-        user_id
-        created_time
-        store_id
-        
-    OrderLine
-        order_line_id
-        order_id
-        good_id
-## Add migration for new model
+    * login page
+    * main template
+    * login template
+    * login endpoint
+    * stores page for autorised manager
+    * create public page with goods
+
+# Homework
+Create form for order creation

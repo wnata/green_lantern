@@ -3,7 +3,7 @@ from flask_migrate import MigrateCommand
 from flask_script import Server, Manager
 
 from grocery_store.config import Config
-from grocery_store.routes import users, goods, stores, auth
+from grocery_store.routes import users, goods, stores, auth, main
 from grocery_store.db import db
 from grocery_store.commands import Populate
 
@@ -15,6 +15,7 @@ def make_app():
     app.register_blueprint(goods)
     app.register_blueprint(stores)
     app.register_blueprint(auth)
+    app.register_blueprint(main)
     return app
 
 

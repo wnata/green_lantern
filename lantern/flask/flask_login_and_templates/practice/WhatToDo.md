@@ -1,6 +1,6 @@
 # Practice plan
 
-  * investigagte what was written
+  * investigate what was written
   * Add session
   * Add details on profile page
     * User info

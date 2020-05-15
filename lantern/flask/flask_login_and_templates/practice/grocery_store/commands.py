@@ -24,6 +24,8 @@ def get_users():
     with open(USERS_DIR, "r") as f:
         reader = csv.DictReader(f)
         users = [user for user in reader]
+        for user in users:
+            user['password'] = 'sha256$TlFrkAzh$807b3e82dd1b2c6ee26e64ab8ad1ad55fc462d37e9a3b6b5bdd387530867864f'
     return users
 
 

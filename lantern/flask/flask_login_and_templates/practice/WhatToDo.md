@@ -1,11 +1,11 @@
 # Practice plan
 
-    * login page
-    * main template
-    * login template
-    * login endpoint
-    * stores page for autorised manager
-    * create public page with goods
+  * investigagte what was written
+  * Add session
+  * Add details on profile page
+    * User info
+    * Orders info
+    * stores (if there are stores where he is a manager)
 
 # Homework
-Create form for order creation
+Create page for all goods

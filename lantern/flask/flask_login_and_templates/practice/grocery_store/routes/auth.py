@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from grocery_store.database import db
 from grocery_store.models import User
@@ -9,6 +9,13 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login')
 def login():
     return render_template('login.html')
+
+
+@auth.route('/login', methods=['POST'])
+def login_post():
+    # login code goes here
+    return redirect(url_for('main.profile'))
+
 
 @auth.route('/signup')
 def signup():
@@ -29,6 +36,7 @@ def signup_post():
 
     # if a user is found, we want to redirect back to signup page so user can try again
     if user:
+        flash('Email address already exists')
         return redirect(url_for('auth.signup'))
 
     # create new user with the form data. Hash the password so plaintext version isn't saved.

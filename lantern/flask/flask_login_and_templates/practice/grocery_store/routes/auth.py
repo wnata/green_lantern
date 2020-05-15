@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from grocery_store import db
+from grocery_store.database import db
 from grocery_store.models import User
 
 auth = Blueprint('auth', __name__)

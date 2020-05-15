@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource, marshal
 
 from grocery_store.models import Store
-from grocery_store.db import db
+from grocery_store.database import db
 from grocery_store.routes.marshal_structure import stores_structure
 
 

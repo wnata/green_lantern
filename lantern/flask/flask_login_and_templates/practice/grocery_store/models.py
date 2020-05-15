@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import DateTime
 
-from grocery_store.db import db
+from grocery_store.database import db
 
 
 class User(db.Model):

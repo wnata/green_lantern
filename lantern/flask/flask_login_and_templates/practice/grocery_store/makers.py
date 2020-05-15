@@ -4,7 +4,7 @@ from flask_script import Server, Manager
 
 from grocery_store.config import Config
 from grocery_store.routes import users, goods, stores, auth, main
-from grocery_store.db import db
+from grocery_store.database import db
 from grocery_store.commands import Populate
 
 

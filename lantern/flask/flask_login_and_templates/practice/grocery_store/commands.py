@@ -9,9 +9,9 @@ from sqlalchemy_utils import create_database, drop_database, database_exists
 from flask_script import Command
 
 
-USERS_DIR = os.path.join(FIXTURES_DIR, "users.csv")
-GOODS_DIR = os.path.join(FIXTURES_DIR, "goods.csv")
-STORES_DIR = os.path.join(FIXTURES_DIR, "stores.csv")
+USERS_FILENAME = os.path.join(FIXTURES_DIR, "users.csv")
+GOODS_FILENAME = os.path.join(FIXTURES_DIR, "goods.csv")
+STORES_FILENAME = os.path.join(FIXTURES_DIR, "stores.csv")
 logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)-6s %(message)s",
@@ -21,23 +21,21 @@ logging.basicConfig(
 
 
 def get_users():
-    with open(USERS_DIR, "r") as f:
+    with open(USERS_FILENAME, "r") as f:
         reader = csv.DictReader(f)
         users = [user for user in reader]
-        for user in users:
-            user['password'] = 'sha256$TlFrkAzh$807b3e82dd1b2c6ee26e64ab8ad1ad55fc462d37e9a3b6b5bdd387530867864f'
     return users
 
 
 def get_goods():
-    with open(GOODS_DIR, "r") as f:
+    with open(GOODS_FILENAME, "r") as f:
         reader = csv.DictReader(f)
         goods = [good for good in reader]
     return goods
 
 
 def get_stores():
-    with open(STORES_DIR, "r") as f:
+    with open(STORES_FILENAME, "r") as f:
         reader = csv.DictReader(f)
         stores = [store for store in reader]
     return stores

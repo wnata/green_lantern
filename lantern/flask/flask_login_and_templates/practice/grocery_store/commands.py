@@ -70,16 +70,14 @@ class PopulateOrders(Command):
             users = User.query.all()
             goods = Good.query.all()
             stores = Store.query.all()
-            import pdb; pdb.set_trace()
-            pass
-            # for user in users:
-            #     number_of_orders = randint(1, 5)
-            #     for _ in range(number_of_orders):
-            #         number_of_goods = randint(1, 10)
-            #         order = Order()
-            #         order_lines = [OrderLine(good=good) for good in sample(goods, number_of_goods)]
-            #         order.order_lines = order_lines
-            #         order.user = user
-            #         order.store = choice(stores)
-            #         db.session.add(order)
-            # db.session.commit()
+            for user in users:
+                number_of_orders = randint(1, 5)
+                for _ in range(number_of_orders):
+                    number_of_goods = randint(1, 10)
+                    order = Order()
+                    order_lines = [OrderLine(good=good) for good in sample(goods, number_of_goods)]
+                    order.order_lines = order_lines
+                    order.user = user
+                    order.store = choice(stores)
+                    db.session.add(order)
+            db.session.commit()

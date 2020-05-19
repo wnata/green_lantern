@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Goods</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <td><strong>Name</strong></td>
+        <td><strong>Brand</strong></td>
+        <td><strong>Price</strong></td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for good in goods %}
+    <tr>
+        <td>{{ good.name }}</td>
+        <td>{{ good.brand }}</td>
+        <td>{{ good.price }}</td>
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}
+
+
+
+

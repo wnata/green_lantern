@@ -2,14 +2,14 @@ version: '3.7'
 
 services:
   web:
-    build: ../services/web
+    build: ../flask-on-docker/services/web
     command: python manage.py run -h 0.0.0.0
     volumes:
       - ../services/web/:/usr/src/app/
     ports:
       - 5000:5000
     env_file:
-      - web/project/.env.dev
+      - ../flask-on-docker/services/web/project/.env.dev
 
   db:
     image: postgres:12.0-alpine

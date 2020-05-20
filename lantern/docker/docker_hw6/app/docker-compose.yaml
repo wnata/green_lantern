@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  web:
+    build: ..
+    command: python manage.py
+
+    ports:
+      - 8000:5000

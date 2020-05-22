@@ -2,7 +2,30 @@
 
 {% block content %}
 <h1 class="title">
-  Welcome, {{ user }}!
-  Your email is {{ email }}
+    Welcome, {{ user }}!
+    Your email is {{ email }}
 </h1>
+{% if stores %}
+<h2 class="title">Stores which you manage</h2>
+<table class="table is-bordered is-striped is-narrow is-hoverable" align="center">
+    <thead>
+    <tr>
+        <th>Store id</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for store in stores %}
+    <tr>
+        <td>{{ store.store_id }}</td>
+        <td>{{ store.name }}</td>
+        <td>{{ store.city }}</td>
+        <td>{{ store.address }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}

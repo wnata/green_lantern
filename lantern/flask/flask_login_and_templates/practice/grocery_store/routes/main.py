@@ -16,7 +16,11 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', user=current_user.name, email=current_user.email)
+    stores = Store.query.filter(Store.manager_id == current_user.user_id).all()
+    return render_template('profile.html',
+                           user=current_user.name,
+                           email=current_user.email,
+                           stores=stores)
 
 
 @main.route('/orders')
@@ -34,7 +38,6 @@ def orders():
         order_lines = OrderLine.query.filter(order.order_id == OrderLine.order_id).all()
 
         name_price = []
-        # [ {name:qwedfw}, {price:43} ]
         order_sum = 0
         for order_line in order_lines:
             goods = {}
@@ -43,10 +46,9 @@ def orders():
             order_sum += good.price
             name_price.append(goods)
 
-
         body_dict['goods'] = name_price
         body_dict['order_sum'] = order_sum
-        body_dict['Order_date'] = datetime.strftime(order.created_time,'%b %d, %Y')
+        body_dict['Order_date'] = datetime.strftime(order.created_time, '%b %d, %Y')
         order_dict[order.order_id] = body_dict
         orders_list.append(order_dict)
 

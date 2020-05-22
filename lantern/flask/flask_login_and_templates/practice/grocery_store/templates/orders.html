@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">Your orders!</h1>
+
+<table class="table" align="center">
+    <thead>
+    <tr>
+        <td><strong>order_id</strong></td>
+        <td><strong>Store</strong></td>
+        <td><strong>Goods</strong></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for order in orders %} <!-- 1 -->
+
+    <tr>
+        {% for key, body in order.items() %} <!-- 2 -->
+            <td>{{ key }}</td>
+            {% for i, item in body.items() %} <!-- 3 -->
+                {% if i=='goods' %} <!-- if open -->
+                    <td>{% for good in item %}<p>{{ good }}{% endfor %}</td>
+                    {% else %}
+                        <td>{{ item }}</td>
+                    {% endif %} <!-- if close -->
+                {% endfor %} <!-- 3 -->
+        {% endfor %} <!-- 2 -->
+    </tr>
+    {% endfor %} <!-- 1 -->
+    </tbody>
+</table>
+
+{% endblock %}

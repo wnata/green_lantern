@@ -1,8 +1,8 @@
 from flask import request
 from flask_restful import Resource, marshal
 
-from grocery_store.models import Good
 from grocery_store.database import db
+from grocery_store.models import Good
 from grocery_store.routes.marshal_structure import goods_structure
 
 

@@ -3,23 +3,21 @@ import logging
 import os
 
 from grocery_store.models import User, Good, Store, Order, OrderLine
-from grocery_store.config import FIXTURES_DIR, Config
-from sqlalchemy_utils import create_database, drop_database, database_exists
+from grocery_store.config import FIXTURES_DIR
 
 from random import randint, choice, sample, randrange
 
 from flask_script import Command
 
-
 USERS_FILENAME = os.path.join(FIXTURES_DIR, "users.csv")
 GOODS_FILENAME = os.path.join(FIXTURES_DIR, "goods.csv")
 STORES_FILENAME = os.path.join(FIXTURES_DIR, "stores.csv")
 logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s %(levelname)-6s %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        # filename="logfile.log",  # if you want!!!
-    )
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)-6s %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    # filename="logfile.log",  # if you want!!!
+)
 
 
 def get_users():
@@ -41,7 +39,6 @@ def get_stores():
         reader = csv.DictReader(f)
         stores = [store for store in reader]
     return stores
-
 
 
 class Populate(Command):

@@ -66,7 +66,7 @@ class Car(BaseDateAuditModel):
         (STATUS_ARCHIVED, "Archived"),
     )
 
-    objects = CarManager.from_queryset(CarQuerySet)
+    objects = CarManager.from_queryset(CarQuerySet)()
     views = models.PositiveIntegerField(default=0, editable=False)
     slug = models.SlugField(max_length=75)
     number = models.CharField(max_length=16, unique=True)

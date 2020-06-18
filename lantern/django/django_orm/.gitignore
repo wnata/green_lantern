@@ -25,6 +25,7 @@ wheels/
 pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
+src/apps/restaraunt/
 .installed.cfg
 *.egg
 MANIFEST

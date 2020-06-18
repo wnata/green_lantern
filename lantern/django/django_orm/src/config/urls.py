@@ -17,9 +17,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
+from apps.newsletter.views import NewsLeterViews
+from common.views import LoginView, logout_view
+from apps.cars.views import CarList
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('success/', TemplateView.as_view(template_name='success_url.html'), name = 'success'),
+    path('newsleter/', NewsLeterViews.as_view(), name='newsletter'),
+    path('car/', CarList.as_view(), name='car_list_url' ),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', logout_view, name='logout' )
 ]
 
 if settings.DEBUG:
